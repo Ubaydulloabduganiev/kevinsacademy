@@ -762,34 +762,161 @@
     }
     .map{
       position:relative;
-      min-height:470px;
+      min-height:520px;
       overflow:hidden;
       border:1px solid var(--line);
       background:
-        linear-gradient(25deg,transparent 49%,rgba(255,255,255,.05) 50%,transparent 51%) 0 0/80px 80px,
-        linear-gradient(-25deg,transparent 49%,rgba(255,255,255,.04) 50%,transparent 51%) 0 0/110px 110px,
+        radial-gradient(circle at 15% 15%,rgba(60,130,255,.16),transparent 30%),
+        radial-gradient(circle at 82% 28%,rgba(215,185,123,.12),transparent 30%),
+        linear-gradient(25deg,transparent 49%,rgba(255,255,255,.045) 50%,transparent 51%) 0 0/82px 82px,
+        linear-gradient(-25deg,transparent 49%,rgba(255,255,255,.035) 50%,transparent 51%) 0 0/112px 112px,
         #101a27;
+      padding:20px;
+      display:grid;
+      grid-template-rows:auto 1fr 1fr auto;
+      gap:14px;
     }
-    .map::after{
-      content:"KEVIN’S ACADEMY";
+    .map::before{
+      content:"";
+      position:absolute;
+      inset:-120px;
+      pointer-events:none;
+      opacity:.22;
+      background:
+        linear-gradient(90deg,transparent 0 48%,rgba(215,185,123,.25) 49% 51%,transparent 52% 100%) 0 0/120px 120px,
+        linear-gradient(0deg,transparent 0 48%,rgba(60,130,255,.20) 49% 51%,transparent 52% 100%) 0 0/120px 120px;
+      transform:rotate(-8deg);
+    }
+    .map-header,.map-card,.map-note{position:relative;z-index:2}
+    .map-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:12px 14px;
+      border:1px solid rgba(255,255,255,.11);
+      background:rgba(6,10,18,.55);
+      backdrop-filter:blur(14px);
+    }
+    .map-header span{
+      color:var(--gold);
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+    .map-header strong{
+      font-family:var(--serif);
+      font-size:17px;
+      font-weight:500;
+    }
+    .map-card{
+      display:grid;
+      grid-template-columns:.78fr 1fr;
+      gap:18px;
+      min-height:185px;
+      padding:17px;
+      border:1px solid rgba(255,255,255,.13);
+      color:var(--ivory);
+      background:rgba(6,10,18,.62);
+      box-shadow:0 20px 65px rgba(0,0,0,.23);
+      backdrop-filter:blur(16px);
+      transition:.28s ease;
+    }
+    .map-card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(215,185,123,.45);
+      box-shadow:0 28px 80px rgba(0,0,0,.38);
+    }
+    .map-visual{
+      position:relative;
+      overflow:hidden;
+      min-height:150px;
+      border:1px solid rgba(255,255,255,.09);
+      background:
+        linear-gradient(28deg,transparent 47%,rgba(255,255,255,.08) 49%,transparent 51%) 0 0/54px 54px,
+        linear-gradient(-28deg,transparent 47%,rgba(255,255,255,.06) 49%,transparent 51%) 0 0/72px 72px,
+        linear-gradient(145deg,#142238,#07101d);
+    }
+    .map-road{
+      position:absolute;
+      left:-20%;
+      top:48%;
+      width:145%;
+      height:22px;
+      border-block:1px solid rgba(215,185,123,.35);
+      background:rgba(215,185,123,.08);
+      transform:rotate(-19deg);
+    }
+    .map-road.alt{
+      top:64%;
+      transform:rotate(24deg);
+      opacity:.6;
+    }
+    .map-pin{
       position:absolute;
       left:50%;
-      top:50%;
+      top:46%;
       transform:translate(-50%,-50%);
-      padding:13px 18px;
-      color:var(--night);
-      background:var(--gold);
-      font-size:11px;
-      font-weight:900;
-      letter-spacing:.08em;
-      white-space:nowrap;
+      width:58px;
+      height:58px;
+      display:grid;
+      place-items:center;
+      border-radius:50% 50% 50% 8px;
+      rotate:-45deg;
+      color:#07111f;
+      background:linear-gradient(135deg,var(--gold2),var(--gold));
+      box-shadow:0 0 0 9px rgba(215,185,123,.12),0 18px 38px rgba(0,0,0,.35);
+      font-weight:950;
+      font-size:21px;
     }
-    .map span{
-      position:absolute;
-      left:20px;
-      bottom:18px;
-      color:#6f7885;
+    .map-pin span{rotate:45deg}
+    .google-card .map-pin{background:linear-gradient(135deg,#f1d79d,#3c82ff)}
+    .yandex-card .map-pin{background:linear-gradient(135deg,#f1d79d,#d94242)}
+    .map-copy{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      min-width:0;
+    }
+    .map-copy small{
+      color:var(--gold);
+      font-size:9px;
+      font-weight:900;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .map-copy strong{
+      margin:10px 0 8px;
+      font-family:var(--serif);
+      font-size:30px;
+      font-weight:500;
+      line-height:1.02;
+    }
+    .map-copy p{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+    .map-copy .map-open{
+      color:var(--gold2);
+      font-size:12px;
+      font-weight:900;
+    }
+    .map-note{
+      padding:11px 13px;
+      color:#7f8794;
+      border:1px solid rgba(255,255,255,.1);
+      background:rgba(255,255,255,.025);
       font-size:10px;
+      line-height:1.55;
+    }
+    .map-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:25px;
     }
     .location-info{
       display:flex;
@@ -1115,6 +1242,15 @@
       .result-placeholders{grid-template-columns:1fr}
       .review blockquote{font-size:18px}
     }
+
+    @media(max-width:780px){
+      .map{min-height:auto;padding:14px;grid-template-rows:auto auto auto auto}
+      .map-card{grid-template-columns:1fr;min-height:auto}
+      .map-visual{min-height:145px}
+      .map-copy strong{font-size:27px}
+      .map-actions .button{width:100%}
+    }
+
   </style>
 </head>
 <body>
@@ -1539,7 +1675,40 @@
 
       <div class="location-grid reveal">
         <div class="map">
-          <span data-i18n="mapPlaceholder">Interaktiv xarita shu yerga ulanadi</span>
+          <div class="map-header">
+            <span data-i18n="mapMode">Xaritani tanlang</span>
+            <strong>Kevin’s Academy</strong>
+          </div>
+
+          <a class="map-card google-card" href="https://www.google.com/maps/search/?api=1&query=Kevin%27s%20Academy%20Fergana%20Uzbekistan" target="_blank" rel="noopener">
+            <div class="map-visual" aria-hidden="true">
+              <div class="map-road"></div>
+              <div class="map-road alt"></div>
+              <div class="map-pin"><span>G</span></div>
+            </div>
+            <div class="map-copy">
+              <small>Google Maps</small>
+              <strong data-i18n="googleMapTitle">Google Map orqali toping</strong>
+              <p data-i18n="googleMapText">Google orqali yo‘lni ko‘ring, marshrut oching va markazni tezroq toping.</p>
+              <span class="map-open" data-i18n="openGoogleMap">Google Map’da ochish ↗</span>
+            </div>
+          </a>
+
+          <a class="map-card yandex-card" href="https://yandex.uz/maps/?text=Kevin%27s%20Academy%20Fergana%20Uzbekistan" target="_blank" rel="noopener">
+            <div class="map-visual" aria-hidden="true">
+              <div class="map-road"></div>
+              <div class="map-road alt"></div>
+              <div class="map-pin"><span>Y</span></div>
+            </div>
+            <div class="map-copy">
+              <small>Yandex Maps</small>
+              <strong data-i18n="yandexMapTitle">Yandex Map orqali toping</strong>
+              <p data-i18n="yandexMapText">Yandex xaritasida manzilni oching, transport va piyoda yo‘nalishni tekshiring.</p>
+              <span class="map-open" data-i18n="openYandexMap">Yandex Map’da ochish ↗</span>
+            </div>
+          </a>
+
+          <div class="map-note" data-i18n="mapNote">Aniq manzil yoki koordinata berilgach, bu linklar to‘g‘ridan-to‘g‘ri aniq lokatsiyaga ulanadi.</div>
         </div>
 
         <div class="location-info">
@@ -1549,8 +1718,9 @@
           <div class="contact-row"><small>Telegram</small><span>[Telegram havolasi]</span></div>
           <div class="contact-row"><small>Instagram</small><span>[Instagram havolasi]</span></div>
           <div class="contact-row"><small data-i18n="hoursLabel">Ish vaqti</small><span>[ish vaqti]</span></div>
-          <div style="margin-top:25px">
-            <a href="#" onclick="placeholder(event)" class="button" data-i18n="openDirections">Yo‘nalishni ochish</a>
+          <div class="map-actions">
+            <a href="https://www.google.com/maps/search/?api=1&query=Kevin%27s%20Academy%20Fergana%20Uzbekistan" target="_blank" rel="noopener" class="button" data-i18n="openGoogleMap">Google Map’da ochish ↗</a>
+            <a href="https://yandex.uz/maps/?text=Kevin%27s%20Academy%20Fergana%20Uzbekistan" target="_blank" rel="noopener" class="button ghost" data-i18n="openYandexMap">Yandex Map’da ochish ↗</a>
           </div>
         </div>
       </div>
@@ -1659,6 +1829,9 @@ const translations={
     formMicrocopy:"Ariza yuborish bepul. Administratorimiz siz bilan bog‘lanib, barcha savollaringizga javob beradi.",
     phoneCall:"Qo‘ng‘iroq qilish",contactPlaceholder:"Kontakt havolalari Kevin’s Academy ma’lumotlari bilan almashtiriladi.",
     locationKicker:"Manzil",locationTitle:"Kevin’s Academy’ga tashrif buyuring",mapPlaceholder:"Interaktiv xarita shu yerga ulanadi",
+    mapMode:"Xaritani tanlang",googleMapTitle:"Google Map orqali toping",googleMapText:"Google orqali yo‘lni ko‘ring, marshrut oching va markazni tezroq toping.",openGoogleMap:"Google Map’da ochish ↗",
+    yandexMapTitle:"Yandex Map orqali toping",yandexMapText:"Yandex xaritasida manzilni oching, transport va piyoda yo‘nalishni tekshiring.",openYandexMap:"Yandex Map’da ochish ↗",
+    mapNote:"Aniq manzil yoki koordinata berilgach, bu linklar to‘g‘ridan-to‘g‘ri aniq lokatsiyaga ulanadi.",
     addressLabel:"Manzil",phoneLabel:"Telefon",hoursLabel:"Ish vaqti",openDirections:"Yo‘nalishni ochish",
     closingLine:"Kevin’s Academy — katta maqsadlar uchun kuchli ta’lim.",navigation:"Navigatsiya",contactTitle:"Bog‘lanish",
     helpTitle:"Kevin’s yordamchisi",helpSubtitle:"Savolingizni yozing. Javob botdan keladi, kerak bo‘lsa adminlarga ham yuboriladi.",
@@ -1708,6 +1881,9 @@ const translations={
     formMicrocopy:"Заявка бесплатна. Администратор свяжется с вами и ответит на все вопросы.",
     phoneCall:"Позвонить",contactPlaceholder:"Контактные ссылки будут заменены данными Kevin’s Academy.",
     locationKicker:"Адрес",locationTitle:"Посетите Kevin’s Academy",mapPlaceholder:"Здесь будет подключена интерактивная карта",
+    mapMode:"Выберите карту",googleMapTitle:"Открыть в Google Maps",googleMapText:"Постройте маршрут через Google и быстрее найдите учебный центр.",openGoogleMap:"Открыть Google Maps ↗",
+    yandexMapTitle:"Открыть в Яндекс Картах",yandexMapText:"Откройте адрес в Яндекс Картах и проверьте маршрут на транспорте или пешком.",openYandexMap:"Открыть Яндекс Карты ↗",
+    mapNote:"После добавления точного адреса или координат ссылки будут вести прямо на точную локацию.",
     addressLabel:"Адрес",phoneLabel:"Телефон",hoursLabel:"Время работы",openDirections:"Открыть маршрут",
     closingLine:"Kevin’s Academy — сильное образование для больших целей.",navigation:"Навигация",contactTitle:"Контакты",
     helpTitle:"Помощник Kevin’s",helpSubtitle:"Напишите вопрос. Ответ может дать бот, а при необходимости сообщение уйдёт администраторам.",
