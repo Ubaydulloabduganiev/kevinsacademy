@@ -3,10 +3,10 @@ import express from "express";
 const app = express();
 const PORT = process.env.PORT || 10000;
 
-const TELEGRAM_BOT_TOKEN = 8961489544:AAEbXwaJUDioMYFgP5WGG9PA7yVuoYpAWNg.TELEGRAM_BOT_TOKEN || "";
-const TELEGRAM_CHAT_IDS = (process.env.TELEGRAM_CHAT_IDS || "8584718189,8727767463")
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || "";
+const TELEGRAM_CHAT_IDS = (process.env.TELEGRAM_CHAT_IDS || "")
   .split(",")
-  .map(x => x.trim())
+  .map(id => id.trim())
   .filter(Boolean);
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY || "";
