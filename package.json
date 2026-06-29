@@ -1,0 +1,17 @@
+{
+  "name": "kevins-academy-telegram-ai-ready",
+  "version": "1.0.0",
+  "description": "Kevin's Academy landing page with Telegram leads and optional OpenAI help chat",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

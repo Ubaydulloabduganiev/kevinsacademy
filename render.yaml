@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: kevins-academy-leads
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TELEGRAM_CHAT_IDS
+        value: "8584718189,8727767463"
+      - key: USE_OPENAI_CHAT
+        value: "false"
+      - key: ALLOWED_ORIGIN
+        value: "*"
